@@ -25,6 +25,9 @@ The dataset is sourced from the NOAA Storm Events Database. It includes details 
 
 ### 2. Create Database: Run CREATE DATABASE storm_events_db; in psql or pgAdmin.
 
+![Image](https://github.com/user-attachments/assets/b38a1c0a-23c6-4982-b468-47bcada1d387)
+
+
 
 ### 3.Install Python Libraries:
 
