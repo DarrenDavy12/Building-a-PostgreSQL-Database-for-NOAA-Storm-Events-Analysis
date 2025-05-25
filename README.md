@@ -19,25 +19,21 @@ The dataset is sourced from the NOAA Storm Events Database. It includes details 
 ## Setup Instructions
 
 
-### 1. Install PostgreSQL: Download and install PostgreSQL from postgresql.org.
+### 1. Created Database within pgAdmin4 (postgreSQL) : Run CREATE DATABASE storm_events_db; in psql or pgAdmin.
+
+![Image](https://github.com/user-attachments/assets/98d8af75-2444-4110-9002-74eb59027f33)
 
 
 
-### 2. Create Database: Run CREATE DATABASE storm_events_db; in psql or pgAdmin.
-
-![Image](https://github.com/user-attachments/assets/b38a1c0a-23c6-4982-b468-47bcada1d387)
-
-
-
-### 3.Install Python Libraries:
+### 2.Installed Python Libraries:
 
 `pip install pandas psycopg2-binary`
 
 
 
-### 4. Download Data: Get the CSV files from NOAA's FTP page.
+### 3. Downloaded Data: Get the CSV files from NOAA's FTP page.
 
-### 5. Run Scripts:
+### 4. Ran Scripts:
 
   - Execute create_tables.sql to set up the database schema.
 
