@@ -27,6 +27,8 @@ The dataset is sourced from the NOAA Storm Events Database. It includes details 
 
 ### 2. Created tables in the 'storm_events_db' database by running: 
 
+#### storms table 
+
 
 `CREATE TABLE storms (
     storm_id SERIAL PRIMARY KEY,
@@ -37,6 +39,9 @@ The dataset is sourced from the NOAA Storm Events Database. It includes details 
     damage_crops NUMERIC
 );`
 
+
+#### locations table
+
 `CREATE TABLE locations (
     location_id SERIAL PRIMARY KEY,
     storm_id INTEGER REFERENCES storms(storm_id),
@@ -46,12 +51,17 @@ The dataset is sourced from the NOAA Storm Events Database. It includes details 
     longitude NUMERIC
 );`
 
+#### fatalities table
 
 `CREATE TABLE fatalities (
     fatality_id SERIAL PRIMARY KEY,
     storm_id INTEGER REFERENCES storms(storm_id),
     number_of_fatalities INTEGER
 );`
+
+
+![Image](https://github.com/user-attachments/assets/ba48bd8f-4cc7-4597-b1c5-48fa1ad7c11b)
+
 
 ---
 
