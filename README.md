@@ -23,11 +23,41 @@ The dataset is sourced from the NOAA Storm Events Database. It includes details 
 
 ![Image](https://github.com/user-attachments/assets/98d8af75-2444-4110-9002-74eb59027f33)
 
+### 2. Created tables in the 'storm_events_db' database by running: 
+
+
+`CREATE TABLE storms (
+    storm_id SERIAL PRIMARY KEY,
+    event_type VARCHAR(50),
+    start_date DATE,
+    end_date DATE,
+    damage_property NUMERIC,
+    damage_crops NUMERIC
+);`
+
+`CREATE TABLE locations (
+    location_id SERIAL PRIMARY KEY,
+    storm_id INTEGER REFERENCES storms(storm_id),
+    state VARCHAR(50),
+    county VARCHAR(100),
+    latitude NUMERIC,
+    longitude NUMERIC
+);`
+
+
+`CREATE TABLE fatalities (
+    fatality_id SERIAL PRIMARY KEY,
+    storm_id INTEGER REFERENCES storms(storm_id),
+    number_of_fatalities INTEGER
+);`
+
 
 
 ### 2.Installed Python Libraries:
 
 `pip install pandas psycopg2-binary`
+
+
 
 
 
