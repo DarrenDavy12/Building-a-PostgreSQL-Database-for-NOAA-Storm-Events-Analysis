@@ -67,13 +67,16 @@ The dataset is sourced from the NOAA Storm Events Database. It includes details 
 
 ### 3.Installed Python Libraries:
 
-`pip install pandas psycopg2-binary`
+Ran the command: `pip install pandas psycopg2-binary` inside VScode terminal. 
 
+![Image](https://github.com/user-attachments/assets/54dc9a2c-f8e4-4295-b778-ca18d770037f)
 
 
 ---
 
-### 3. Downloaded Data: Get the CSV files from NOAA's FTP page.
+### 4. Downloaded Data: Get the CSV files from NOAA's FTP page.
+
+
 
 
 --- 
