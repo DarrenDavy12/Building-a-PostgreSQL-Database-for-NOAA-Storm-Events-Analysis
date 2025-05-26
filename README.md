@@ -93,6 +93,7 @@ Ran the command: `pip install pandas psycopg2-binary` inside VScode terminal.
 --- 
 
     - fatalities table 
+![Image](https://github.com/user-attachments/assets/0b745c1e-38d5-4367-8226-5c6b8b9bc157)
 
 
 
@@ -118,35 +119,50 @@ First I logged into psql (sql shell) and ran these commands:
   #### - Ran load_data.py for all three table with their individual scripts to load the CSV data into PostgreSQL.
 
 
-    ##### - storm table
+
+##### - storm table
     
 ![Image](https://github.com/user-attachments/assets/2f73e091-64e8-4e4d-aeba-e41847de6589)
 
+##### - ran a query in pgAdmin for the storms table
 
-    ##### - locations table
+![Image](https://github.com/user-attachments/assets/e78bc99d-ea8c-4af1-ae16-5ffb0128be2c)
+
+
+
+
+##### - locations table
     
 ![Image](https://github.com/user-attachments/assets/9bef7480-7af7-4f5e-938b-b4a8c721f251)
 
-
-    ##### - fatalities table
-
+##### - ran a query in pgAdmin for the locations table
 
 
 
 
 
-  #### - Checked error logfile and saw that a duplicate of EVENT_ID column as a unique key was being added to the already created EVENT_ID.
+##### - fatalities table
+
+![Image](https://github.com/user-attachments/assets/0a1a23b5-4522-4a3f-b860-8e42aa849bb0)
+
+##### - ran a query in pgAdmin for the fatalities table
+
+![Image](https://github.com/user-attachments/assets/b08a0412-0a4d-4a3b-aef9-0392bc8e5d7d)
+
+
+
+#### - Checked error logfile and saw that a duplicate of EVENT_ID column as a unique key was being added to the already created EVENT_ID.
     
 ![Image](https://github.com/user-attachments/assets/53e75223-099f-4797-b04f-565e2129c0d8)
 
 
-  #### - So I had to run the command in psql:
+#### - So I had to run the command in psql:
     `TRUNCATE TABLE storms RESTART IDENTITY;` -- removes all rows from the storms table
     
 ![Image](https://github.com/user-attachments/assets/c0e2bc32-d1c1-49bb-878a-be92feb83994)
 
 
-  #### - Running the 'TRUNCATE' command resolved the issue and I verified the data by running:
+#### - Running the 'TRUNCATE' command resolved the issue and I verified the data by running these sql commands inside pgAdmin:
     
         `SELECT COUNT(*) FROM storms;  -- Check total rows`
         `SELECT * FROM storms LIMIT 5;  -- View sample data`
@@ -154,9 +170,9 @@ First I logged into psql (sql shell) and ran these commands:
 ![Image](https://github.com/user-attachments/assets/c35bf40b-8753-45fd-8933-d8c34b3cc4ef)
 
     
-  #### - Use analytical_queries.sql to explore the data.
+#### - Use analytical_queries.sql to explore the data.
 
-  #### - Apply optimize.sql for performance improvements.
+#### - Apply optimize.sql for performance improvements.
 
 
 --- 
