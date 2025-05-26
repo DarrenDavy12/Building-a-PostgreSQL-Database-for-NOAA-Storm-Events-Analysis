@@ -76,9 +76,11 @@ Ran the command: `pip install pandas psycopg2-binary` inside VScode terminal.
 
 ### 4. Data Ingestion: Downloaded CSV files from NOAA's FTP page.
 
+#### Wrote python script in vscode with errors included. 
 
+![Image](https://github.com/user-attachments/assets/0670b822-ddd5-4d59-bae3-cbdea8c80811)
 
-
+![Image](https://github.com/user-attachments/assets/70b3dc83-2c83-416e-a4a3-d97d067172b5)
 
 --- 
 ### 4. Ran Scripts:
