@@ -30,34 +30,34 @@ The dataset is sourced from the NOAA Storm Events Database. It includes details 
 #### storms table 
 
 
-`CREATE TABLE storms (
-    storm_id SERIAL PRIMARY KEY,
-    event_type VARCHAR(50),
-    start_date DATE,
-    end_date DATE,
-    damage_property NUMERIC,
-    damage_crops NUMERIC
-);`
+        `CREATE TABLE storms (
+            storm_id SERIAL PRIMARY KEY,
+            event_type VARCHAR(50),
+            start_date DATE,
+            end_date DATE,
+            damage_property NUMERIC,
+            damage_crops NUMERIC
+        );`
 
 
 #### locations table
 
-`CREATE TABLE locations (
-    location_id SERIAL PRIMARY KEY,
-    storm_id INTEGER REFERENCES storms(storm_id),
-    state VARCHAR(50),
-    county VARCHAR(100),
-    latitude NUMERIC,
-    longitude NUMERIC
-);`
+        `CREATE TABLE locations (
+            location_id SERIAL PRIMARY KEY,
+            storm_id INTEGER REFERENCES storms(storm_id),
+            state VARCHAR(50),
+            county VARCHAR(100),
+            latitude NUMERIC,
+            longitude NUMERIC
+        );`
 
 #### fatalities table
 
-`CREATE TABLE fatalities (
-    fatality_id SERIAL PRIMARY KEY,
-    storm_id INTEGER REFERENCES storms(storm_id),
-    number_of_fatalities INTEGER
-);`
+        `CREATE TABLE fatalities (
+            fatality_id SERIAL PRIMARY KEY,
+            storm_id INTEGER REFERENCES storms(storm_id),
+            number_of_fatalities INTEGER
+        );`
 
 
 ![Image](https://github.com/user-attachments/assets/ba48bd8f-4cc7-4597-b1c5-48fa1ad7c11b)
@@ -101,11 +101,11 @@ Ran the command: `pip install pandas psycopg2-binary` inside VScode terminal.
 
 First I logged into psql (sql shell) and ran these commands: 
 
-`\1 -- listed databases inside postgres`
-
-`\dt -- listed tables inside of storm_events_db` 
-
-`SELECT * FROM storms LIMIT 5; -- selected the first five rows from the details(storms) table`  
+        `\1 -- listed databases inside postgres`
+        
+        `\dt -- listed tables inside of storm_events_db` 
+        
+        `SELECT * FROM storms LIMIT 5; -- selected the first five rows from the details(storms) table`  
 
 
 ![Image](https://github.com/user-attachments/assets/7b9472ac-add4-468e-b5f5-73d02d001858)
@@ -114,9 +114,9 @@ First I logged into psql (sql shell) and ran these commands:
 
 ### 6. Ran Scripts:
 
-  #### - Execute create_tables.sql to set up the database schema.
+#### - Execute create_tables.sql to set up the database schema.
 
-  #### - Ran load_data.py for all three table with their individual scripts to load the CSV data into PostgreSQL.
+#### - Ran load_data.py for all three table with their individual scripts to load the CSV data into PostgreSQL.
 
 
 
@@ -150,6 +150,9 @@ First I logged into psql (sql shell) and ran these commands:
 ![Image](https://github.com/user-attachments/assets/b08a0412-0a4d-4a3b-aef9-0392bc8e5d7d)
 
 
+---
+
+### Troubleshooting errors:
 
 #### - Checked error logfile and saw that a duplicate of EVENT_ID column as a unique key was being added to the already created EVENT_ID.
     
@@ -157,7 +160,7 @@ First I logged into psql (sql shell) and ran these commands:
 
 
 #### - So I had to run the command in psql:
-    `TRUNCATE TABLE storms RESTART IDENTITY;` -- removes all rows from the storms table
+        `TRUNCATE TABLE storms RESTART IDENTITY;` -- removes all rows from the storms table
     
 ![Image](https://github.com/user-attachments/assets/c0e2bc32-d1c1-49bb-878a-be92feb83994)
 
@@ -169,30 +172,55 @@ First I logged into psql (sql shell) and ran these commands:
 
 ![Image](https://github.com/user-attachments/assets/c35bf40b-8753-45fd-8933-d8c34b3cc4ef)
 
+---
+
     
 #### - Use analytical_queries.sql to explore the data.
+
+![Image](https://github.com/user-attachments/assets/1a3ce51e-f24a-4a2d-bd54-142bcbd820f8)
+
+
+
 
 #### - Apply optimize.sql for performance improvements.
 
 
---- 
 
 ## Sample Queries
 
 
 ### Top 10 states with most storm events:
 
-`SELECT state, COUNT(*) as total_events
-FROM locations
-GROUP BY state
-ORDER BY total_events DESC
-LIMIT 10;`
+        `SELECT state, COUNT(*) as total_events
+        FROM locations
+        GROUP BY state
+        ORDER BY total_events DESC
+        LIMIT 10;`
+
 
 
 
 ### Total damage by event type:
 
-`SELECT event_type, SUM(damage_property + damage_crops) as total_damage
-FROM storms
-GROUP BY event_type
-ORDER BY total_damage DESC;`
+        `SELECT event_type, SUM(damage_property + damage_crops) as total_damage
+        FROM storms
+        GROUP BY event_type
+        ORDER BY total_damage DESC;`
+
+
+
+
+### Number of storms per year:
+
+        `SELECT EXTRACT(YEAR FROM start_date) as year, COUNT(*) as total_storms
+        FROM storms
+        GROUP BY year`
+        ORDER BY year;
+
+
+
+#### I created index's, for faster date-based queries and joins in locations. 
+![Image](https://github.com/user-attachments/assets/8eb3b9b7-9af0-455d-b9d7-c428e5378a10)
+
+
+
