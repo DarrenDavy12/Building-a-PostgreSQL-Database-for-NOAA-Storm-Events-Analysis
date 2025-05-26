@@ -83,6 +83,23 @@ Ran the command: `pip install pandas psycopg2-binary` inside VScode terminal.
 ![Image](https://github.com/user-attachments/assets/70b3dc83-2c83-416e-a4a3-d97d067172b5)
 
 --- 
+
+
+### 5. Verifying postgreSQL setup  
+
+First I logged into psql (sql shell) and ran these commands: 
+
+`\1 -- listed databases inside postgres`
+
+`\dt -- listed tables inside of storm_events_db` 
+
+`SELECT * FROM storms LIMIT 5; -- selected the first five rows from the details(storms) table`  
+
+
+![Image](https://github.com/user-attachments/assets/7b9472ac-add4-468e-b5f5-73d02d001858)
+
+
+
 ### 4. Ran Scripts:
 
   - Execute create_tables.sql to set up the database schema.
