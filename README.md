@@ -76,13 +76,24 @@ Ran the command: `pip install pandas psycopg2-binary` inside VScode terminal.
 
 ### 4. Data Ingestion: Downloaded CSV files from NOAA's FTP page.
 
-#### Wrote python script in vscode with errors included. 
+#### Wrote three python scripts for the three tables created in vscode with errors included. 
 
+    - storms table
 ![Image](https://github.com/user-attachments/assets/0670b822-ddd5-4d59-bae3-cbdea8c80811)
 
 ![Image](https://github.com/user-attachments/assets/70b3dc83-2c83-416e-a4a3-d97d067172b5)
 
+
+    - locations table
+![Image](https://github.com/user-attachments/assets/68c8de7a-6fe0-4934-b7fd-1dab690205f5)
+
+![Image](https://github.com/user-attachments/assets/795a3644-6e8d-41ae-bf46-0035bb79c0e6)
+
+
 --- 
+
+    - fatalities table 
+
 
 
 ### 5. Verifying postgreSQL setup  
@@ -100,15 +111,52 @@ First I logged into psql (sql shell) and ran these commands:
 
 
 
-### 4. Ran Scripts:
+### 6. Ran Scripts:
 
-  - Execute create_tables.sql to set up the database schema.
+  #### - Execute create_tables.sql to set up the database schema.
 
-  - Run load_data.py to load the CSV data into PostgreSQL.
+  #### - Ran load_data.py for all three table with their individual scripts to load the CSV data into PostgreSQL.
 
-  - Use analytical_queries.sql to explore the data.
 
-  - Apply optimize.sql for performance improvements.
+    ##### - storm table
+    
+![Image](https://github.com/user-attachments/assets/2f73e091-64e8-4e4d-aeba-e41847de6589)
+
+
+    ##### - locations table
+    
+![Image](https://github.com/user-attachments/assets/9bef7480-7af7-4f5e-938b-b4a8c721f251)
+
+
+    ##### - fatalities table
+
+
+
+
+
+
+  #### - Checked error logfile and saw that a duplicate of EVENT_ID column as a unique key was being added to the already created EVENT_ID.
+    
+![Image](https://github.com/user-attachments/assets/53e75223-099f-4797-b04f-565e2129c0d8)
+
+
+  #### - So I had to run the command in psql:
+    `TRUNCATE TABLE storms RESTART IDENTITY;` -- removes all rows from the storms table
+    
+![Image](https://github.com/user-attachments/assets/c0e2bc32-d1c1-49bb-878a-be92feb83994)
+
+
+  #### - Running the 'TRUNCATE' command resolved the issue and I verified the data by running:
+    
+        `SELECT COUNT(*) FROM storms;  -- Check total rows`
+        `SELECT * FROM storms LIMIT 5;  -- View sample data`
+
+![Image](https://github.com/user-attachments/assets/c35bf40b-8753-45fd-8933-d8c34b3cc4ef)
+
+    
+  #### - Use analytical_queries.sql to explore the data.
+
+  #### - Apply optimize.sql for performance improvements.
 
 
 --- 
