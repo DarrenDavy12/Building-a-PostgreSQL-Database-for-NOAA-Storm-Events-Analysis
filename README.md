@@ -220,6 +220,7 @@ First I logged into psql (sql shell) and ran these commands:
 
 
 #### I created index's, for faster date-based queries and joins in locations. 
+
 ![Image](https://github.com/user-attachments/assets/8eb3b9b7-9af0-455d-b9d7-c428e5378a10)
 
 
