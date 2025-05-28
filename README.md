@@ -122,7 +122,7 @@ First I logged into psql (sql shell) and ran these commands:
 
 ##### - storm table
     
-![Image](https://github.com/user-attachments/assets/2f73e091-64e8-4e4d-aeba-e41847de6589)
+![Image](https://github.com/user-attachments/assets/f85176a2-9d5f-48be-8c02-d5cee9138f69)
 
 ##### - ran a query in pgAdmin for the storms table
 
