@@ -152,7 +152,9 @@ First I logged into psql (sql shell) and ran these commands:
 
 ---
 
-### Troubleshooting errors:
+#### Next was querying the 'storm' table in which I ran into an error, these are steps I took (below). 
+
+### Troubleshooting error:
 
 #### - Checked error logfile and saw that a duplicate of EVENT_ID column as a unique key was being added to the already created EVENT_ID.
     
@@ -174,15 +176,8 @@ First I logged into psql (sql shell) and ran these commands:
 
 ---
 
-    
-#### - Use analytical_queries.sql to explore the data.
 
 ![Image](https://github.com/user-attachments/assets/1a3ce51e-f24a-4a2d-bd54-142bcbd820f8)
-
-
-
-
-#### - Apply optimize.sql for performance improvements.
 
 
 
